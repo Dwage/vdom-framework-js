@@ -2,7 +2,11 @@
   "name": "my-framework",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "dev": "vite",
+    "build": "npx tsc && vite build",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -10,6 +14,8 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "typescript": "^5.8.2"
+    "@types/estree": "^1.0.6",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.1"
   }
 }
