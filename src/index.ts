@@ -1,13 +1,10 @@
-import { createElement } from './createElement';
-import { render } from './render';
-
-function App() {
-  return createElement('div', { id: 'root' },
-    createElement('h1', null, 'Hello, world!'),
-    createElement('p', null, 'It\'s my first component')
-  );
-}
-
-const app = createElement(App, {}); 
-const rootElement = document.getElementById('app'); 
-render(app, rootElement); 
+export { render } from "./renderer";
+export { createElement } from "./createElement";
+export { useState, useEffect, useCallback } from "./hooks";
+export type {
+  VNode,
+  Props,
+  FunctionComponent,
+  ChildVNode,
+  ChildrenVNode,
+} from "./vdom";
