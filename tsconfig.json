@@ -2,15 +2,18 @@
   "compilerOptions": {
     "target": "es2019",
     "lib": ["ES2019", "DOM"],
-    "module": "esnext",  
+    "module": "esnext",
     "rootDir": "./src",
     "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "jsx": "react",
+    "jsxFactory": "createElement",
+    "jsxFragmentFactory": "Fragment",
+    "typeRoots": ["./node_modules/@types", "./types"]
   },
-  "exclude": [
-    "vite.config.ts"
-  ]
+  "exclude": ["vite.config.ts"],
+  "include": ["src/**/*", "types/global.d.ts"]
 }

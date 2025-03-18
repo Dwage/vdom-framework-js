@@ -262,8 +262,8 @@ function normalizeChildren(children: ChildrenVNode): VNode[] {
   return children.map((child) => {
     if (typeof child === "string" || typeof child === "number") {
       return {
-        type: "",
-        props: { children: [], nodeValue: child },
+        type: null,
+        props: { children: [], nodeValue: child.toString() },
         key: null,
       } as VNode;
     }

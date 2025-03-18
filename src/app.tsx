@@ -1,11 +1,31 @@
 import { SyntheticEvent } from "./eventSystem";
 import {
   render,
-  createElement,
   useState,
   useCallback,
   useEffect,
+  createElement,
 } from "./index";
+
+function ButtonOne() {
+  const [count, setCount] = useState(0);
+  return (
+    <button onClick={() => setCount((prev) => prev + 1)}>Count: {count}</button>
+  );
+}
+
+function ButtonTwo() {
+  const [text, setText] = useState("");
+  return (
+    <input
+      type="text"
+      value={text}
+      onChange={(e: SyntheticEvent) =>
+        setText((e.target as HTMLInputElement).value)
+      }
+    />
+  );
+}
 
 function App() {
   const [count, setCount] = useState(0);
@@ -42,38 +62,30 @@ function App() {
     setColor((color) => (color === "blue" ? "green" : "blue"));
   }, [color]);
 
-  return createElement(
-    "div",
-    { className: "app" },
-    createElement("h1", { style: { color: color } }, "Complex UI"),
-    createElement("h2", {}, `Counter: ${count}`),
-    createElement("button", { onClick: increment }, "Increment"),
-    createElement("hr"),
-    createElement("input", {
-      type: "text",
-      value: text,
-      onInput: handleInputChange,
-    }),
-    createElement("button", { onClick: addTask }, "Add Task"),
-    createElement(
-      "ul",
-      {},
-      ...tasks.map((task, index) => createElement("li", { key: index }, task)),
-    ),
-    createElement("hr"),
-    createElement(
-      "button",
-      {
-        onClick: handleClick,
-      },
-      "Change Title Color",
-    ),
+  return (
+    <div className="app">
+      <h1 style={{ color: color }}>Complex UI</h1>
+      <h2>Counter: {count}</h2>
+      <button onClick={increment}>Increment</button>
+      <hr />
+      <input type="text" value={text} onInput={handleInputChange} />
+      <button onClick={addTask}>Add Task</button>
+      <ul>
+        {tasks.map((task, index) => (
+          <li key={index}>{task}</li>
+        ))}
+      </ul>
+      <hr />
+      <button onClick={handleClick}>Change Title Color</button>
+      <ButtonOne />
+      <ButtonTwo />
+    </div>
   );
 }
 
 window.addEventListener("DOMContentLoaded", () => {
   const app = document.getElementById("app");
   if (app) {
-    render(createElement(App, {}), app);
+    render(<App />, app);
   }
 });

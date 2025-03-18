@@ -1,6 +1,6 @@
 import { Fiber } from "./fiber";
 
-export type VNodeTypes = string | FunctionComponent;
+export type VNodeTypes = string | FunctionComponent | null;
 export type ChildVNode = VNode | string | number | null;
 export type ChildrenVNode = Array<ChildVNode>;
 export type Props = { [key: string]: any; key?: string | number | null };
